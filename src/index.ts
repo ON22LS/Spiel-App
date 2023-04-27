@@ -18,6 +18,19 @@ return console. error("Only positive integers are allowed");
 }
 
 img.style.opacity = "0"; /*Bild anfangs ausblenden (CSS Werte müssen immer Steing sein, daher "0")*/
+container.style.position = "relative";  /*Puzzlestücke absolut im Container platzieren, damit sie dem Bild nich in die Quere kommen, müssen sich überlagern können*/
+
+const generatePieces = () => {/*Puzzlestücke erzeugen*/
+    for (let y = 0; y < rows; y++) { /*Vorschleife erzeugen, y-Were durchgehen*/
+    for (let x = 0; x < columns; x++) { /*x-Werte durchgehen, wo soll das Puzzlestück hin?*/
+    
+    }
+}
+}
+
+img.onload = () => {  /*Eventlistener*/
+generatePieces();
+}
 
 
 }
