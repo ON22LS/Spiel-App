@@ -23,8 +23,10 @@ container.style.position = "relative";  /*Puzzlestücke absolut im Container pla
 const generatePieces = () => {/*Puzzlestücke erzeugen*/
     for (let y = 0; y < rows; y++) { /*Vorschleife erzeugen, y-Were durchgehen*/
     for (let x = 0; x < columns; x++) { /*x-Werte durchgehen, wo soll das Puzzlestück hin?*/
-    
-    }
+    const correctX = (x / columns ) * img.width;/*richtige x-Position, wo es am Ende landet (x durch Anzahl der Spalten) mal die Breite des Bildes*/
+    const correctY = (y/ rows) * img.height;
+   
+}
 }
 }
 
