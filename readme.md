@@ -21,7 +21,7 @@ Have a modern version of Node.installed. Last check was with v18.14.2
 
 Write any source files in typescript inside the source folder, the main file being index.ts as entry file for rollup.
 
-Type tsc to javascript
+Type tsc to javascript.
 
 Link your compiled bundle.js into your HTML-Files.
 
