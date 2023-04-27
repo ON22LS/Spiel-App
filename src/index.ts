@@ -25,7 +25,16 @@ const generatePieces = () => {/*Puzzlestücke erzeugen*/
     for (let x = 0; x < columns; x++) { /*x-Werte durchgehen, wo soll das Puzzlestück hin?*/
     const correctX = (x / columns ) * img.width;/*richtige x-Position, wo es am Ende landet (x durch Anzahl der Spalten) mal die Breite des Bildes*/
     const correctY = (y/ rows) * img.height;
-   
+    /*Endposition ist am Anfang schon zu sehen*/
+    const piece = document.createElement("div");   /*Puzzlestück erstellen*/
+    piece.classList.add("piece");  /*Klasse erstellen, damit Effekt am Ende nicht mehr so schwer zu entfernen ist*/
+
+    piece.style.position = "absolute";
+    piece.style.top = piece.style.left = "0px";/*soll oben links angezeigt werden*/
+    piece.style.width = `${img.width / columns}px`; /*richtet sich nach der Breite des Bildes und der Anzahl der Spalten*/
+    piece.style.height = `${img.height / rows}px`; 
+
+    container.appendChild(piece);
 }
 }
 }
