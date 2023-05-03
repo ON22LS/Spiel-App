@@ -54,6 +54,7 @@ export function applyPuzzleEffect(container: HTMLElement, options: {
 
       container.appendChild(piece);
       
+      piece.style.transform = `translate(${correctX}px,${correctY}px)`; //Puzzlestücke sollen am Ende die richtige Position
     }
 }
     }
@@ -65,4 +66,4 @@ export function applyPuzzleEffect(container: HTMLElement, options: {
 
 const imageContainer = document.getElementById("imageContainer") as HTMLElement;
 
-applyPuzzleEffect(imageContainer, { columns:6, rows:14, spread: 100});
+applyPuzzleEffect(imageContainer, { columns:6, rows:9, spread: 100});
