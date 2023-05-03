@@ -6,6 +6,7 @@ export function applyPuzzleEffect(container: HTMLElement, options: { //Variablen
     spread: number;
     speed: number;
     easing: string; //damit Übergang flüssiger aussieht
+    delay: number;//Verzögerung der einzelnen Schritte
 }) {
     if (!container) { /*wenn kein Container übergeben worden ist*/
       return console.error("No container was found");
@@ -16,7 +17,7 @@ export function applyPuzzleEffect(container: HTMLElement, options: { //Variablen
       return console.error("Could not find image");
     }  
   
-    const {columns, rows, spread, speed, easing} = options; /*distructering: columns und rows ausschließen aus options*/
+    const {columns, rows, spread, speed, easing, delay} = options; /*distructering: columns und rows ausschließen aus options*/
   
     if (
       columns <= 0 || 
@@ -47,9 +48,13 @@ export function applyPuzzleEffect(container: HTMLElement, options: { //Variablen
       piece.style.top = piece.style.left = "0px";
       piece.style.width = `${img.width / columns}px`; 
       piece.style.height = `${img.height / rows}px`;
+      piece.style.opacity = "0";//Puzzlestücke am Anfgang ausblenden
+
       piece.style.transform = `translate(${randomX}px,${randomY}px)`;
       //piece.style.outline = "1px solid red";
-      piece.style.transition = `transform ${speed}ms ${easing}`; // Transform-Eigenschaft soll Übergang haben, Hardcoded-Werte durch Variablen ersetzen
+      piece.style.transition = 
+      `transform ${speed}ms ${easing},`// Transform-Eigenschaft soll Übergang haben, Hardcoded-Werte durch Variablen ersetzen
+      + `opacity ${speed}ms ${easing}`;
 
       piece.style.backgroundImage = `url(${img.src})`;
       piece.style.backgroundPositionX = `-${correctX}px`;
@@ -58,8 +63,9 @@ export function applyPuzzleEffect(container: HTMLElement, options: { //Variablen
       container.appendChild(piece);
 
       setTimeout(() => { //Damit Puzzleteile nicht sofort zusammengeführt werden
+        piece.style.opacity = "1"; //Puzzleteile wieder sichtbar machen
         piece.style.transform = `translate(${correctX}px,${correctY}px)`; //Puzzlestücke sollen am Ende die richtige Position
-      }, 0);
+      }, delay*(y* columns + x)); //multiplizieren mit dem Index des Puzzlestücks, damit 1.Puzzlestück 0, 2. delay, 3. delay x2 usw.
       
       
     }
@@ -73,4 +79,4 @@ export function applyPuzzleEffect(container: HTMLElement, options: { //Variablen
 
 const imageContainer = document.getElementById("imageContainer") as HTMLElement;
 
-applyPuzzleEffect(imageContainer, { columns:6, rows:9, spread: 100, speed:1000, easing: "ease-out"});
+applyPuzzleEffect(imageContainer, { columns:6, rows:9, spread: 100, speed:800, easing: "ease-out", delay: 40});
