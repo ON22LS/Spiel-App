@@ -46,13 +46,15 @@ export function applyPuzzleEffect(container: HTMLElement, options: {
       piece.style.width = `${img.width / columns}px`; 
       piece.style.height = `${img.height / rows}px`;
       piece.style.transform = `translate(${randomX}px,${randomY}px)`;
-      piece.style.outline = "1px solid red";
+      //piece.style.outline = "1px solid red";
 
       piece.style.backgroundImage = `url(${img.src})`;
       piece.style.backgroundPositionX = `-${correctX}px`;
       piece.style.backgroundPositionY = `-${correctY}px`;
 
       container.appendChild(piece);
+
+    
       
       piece.style.transform = `translate(${correctX}px,${correctY}px)`; //Puzzlestücke sollen am Ende die richtige Position
     }
