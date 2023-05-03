@@ -1,9 +1,11 @@
 console.log("hi mom");
 
-export function applyPuzzleEffect(container: HTMLElement, options: {
+export function applyPuzzleEffect(container: HTMLElement, options: { //Variablen erstellen
     columns: number;
     rows: number;
     spread: number;
+    speed: number;
+    easing: string; //damit Übergang flüssiger aussieht
 }) {
     if (!container) { /*wenn kein Container übergeben worden ist*/
       return console.error("No container was found");
@@ -14,7 +16,7 @@ export function applyPuzzleEffect(container: HTMLElement, options: {
       return console.error("Could not find image");
     }  
   
-    const {columns, rows, spread} = options; /*distructering: columns und rows ausschließen aus options*/
+    const {columns, rows, spread, speed, easing} = options; /*distructering: columns und rows ausschließen aus options*/
   
     if (
       columns <= 0 || 
@@ -47,7 +49,7 @@ export function applyPuzzleEffect(container: HTMLElement, options: {
       piece.style.height = `${img.height / rows}px`;
       piece.style.transform = `translate(${randomX}px,${randomY}px)`;
       //piece.style.outline = "1px solid red";
-      piece.style.transition = `transform 500ms linear`; // Transform-Eigenschaft soll Übergang haben
+      piece.style.transition = `transform ${speed}ms ${easing}`; // Transform-Eigenschaft soll Übergang haben, Hardcoded-Werte durch Variablen ersetzen
 
       piece.style.backgroundImage = `url(${img.src})`;
       piece.style.backgroundPositionX = `-${correctX}px`;
@@ -57,7 +59,7 @@ export function applyPuzzleEffect(container: HTMLElement, options: {
 
       setTimeout(() => { //Damit Puzzleteile nicht sofort zusammengeführt werden
         piece.style.transform = `translate(${correctX}px,${correctY}px)`; //Puzzlestücke sollen am Ende die richtige Position
-      }, 1000);
+      }, 0);
       
       
     }
@@ -71,4 +73,4 @@ export function applyPuzzleEffect(container: HTMLElement, options: {
 
 const imageContainer = document.getElementById("imageContainer") as HTMLElement;
 
-applyPuzzleEffect(imageContainer, { columns:6, rows:9, spread: 100});
+applyPuzzleEffect(imageContainer, { columns:6, rows:9, spread: 100, speed:1000, easing: "ease-out"});
