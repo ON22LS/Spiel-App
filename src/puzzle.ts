@@ -47,6 +47,7 @@ export function applyPuzzleEffect(container: HTMLElement, options: {
       piece.style.height = `${img.height / rows}px`;
       piece.style.transform = `translate(${randomX}px,${randomY}px)`;
       //piece.style.outline = "1px solid red";
+      piece.style.transition = `transform 500ms linear`; // Transform-Eigenschaft soll Übergang haben
 
       piece.style.backgroundImage = `url(${img.src})`;
       piece.style.backgroundPositionX = `-${correctX}px`;
@@ -54,9 +55,11 @@ export function applyPuzzleEffect(container: HTMLElement, options: {
 
       container.appendChild(piece);
 
-    
+      setTimeout(() => { //Damit Puzzleteile nicht sofort zusammengeführt werden
+        piece.style.transform = `translate(${correctX}px,${correctY}px)`; //Puzzlestücke sollen am Ende die richtige Position
+      }, 1000);
       
-      piece.style.transform = `translate(${correctX}px,${correctY}px)`; //Puzzlestücke sollen am Ende die richtige Position
+      
     }
 }
     }
