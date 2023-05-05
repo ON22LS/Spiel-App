@@ -1,5 +1,3 @@
-console.log("hi mom");
-
 export function applyPuzzleEffect(container: HTMLElement, options: { //Variablen erstellen
     columns: number;
     rows: number;
