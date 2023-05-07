@@ -1,13 +1,17 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body {
+    background-image: url("https://img.fortawesome.com/1ce05b4b/open-graph-search-v5-default.png");
 }
 
 h1 {
+    color: white;
     text-align: center;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin: 10px;
+    margin-bottom: 10px;
+    font-size: 5rem;
+    font-weight: bold;
+    background: #00000047;
+
+    ;
 }
 
 main {
@@ -15,12 +19,8 @@ main {
     justify-content: center;
     min-height: 100vh;
     overflow: hidden;
-    background: radial-gradient(85.45% 85.45% at 50% 50%, #4E4E4E 0%, rgba(255, 255, 255, 0) 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
-
-    ;
 }
 
 img {
     display: block;
 }
-
