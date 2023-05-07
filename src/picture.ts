@@ -1,4 +1,4 @@
-export function bildAuswahl() {
+/*export function bildAuswahl() {
     const button = document.getElementById("bild-auswahl-button") as HTMLButtonElement;
     const bildBereich = document.getElementById("showPicture") as HTMLDivElement;
 
@@ -21,3 +21,4 @@ export function bildAuswahl() {
         input.click();
     });
 }
+*/

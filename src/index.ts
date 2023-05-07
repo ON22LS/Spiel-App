@@ -2,6 +2,5 @@
 import {applyPuzzleEffect} from './puzzle';
 const createEffect = applyPuzzleEffect;
 
-import { bildAuswahl } from "./picture";
-bildAuswahl();
-
+/*import {startEffect} from './button';
+const createButton = startEffect;*/
