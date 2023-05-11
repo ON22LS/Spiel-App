@@ -76,5 +76,4 @@ export function applyPuzzleEffect(container: HTMLElement, options: { //Variablen
 }
 
 const imageContainer = document.getElementById("imageContainer") as HTMLElement;
-
 applyPuzzleEffect(imageContainer, { columns:6, rows:9, spread: 100, speed:800, easing: "ease-out", delay: 40});

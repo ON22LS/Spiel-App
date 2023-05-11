@@ -1,6 +1,8 @@
 //THIS IS THE ENTRY FILE - WRITE YOUR MAIN LOGIC HERE!
-import {applyPuzzleEffect} from './puzzle';
-const createEffect = applyPuzzleEffect;
+import { bildAuswahl, randomPhoto } from "./picture";
+bildAuswahl();
+randomPhoto();
 
-/*import { bildAuswahl } from "./picture";
-bildAuswahl();*/
+import { formatDate } from './webapi';
+const formattedDate = formatDate();
+console.log(formattedDate);
