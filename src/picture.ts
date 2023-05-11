@@ -28,7 +28,7 @@ export function randomPhoto() {
 
     button.addEventListener("click", () => {
         const img = document.querySelector("#imageContainer img") as HTMLImageElement;
-        const url = new URL("https://unsplash.it/900/540");
+        const url = new URL("https://unsplash.it/750/450");
         url.searchParams.set('t', String(+new Date));
         replaceImage(url.toString());
     });

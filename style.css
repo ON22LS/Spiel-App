@@ -1,3 +1,7 @@
+* {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
 body {
     background-image: url("https://img.fortawesome.com/1ce05b4b/open-graph-search-v5-default.png");
 }
@@ -5,13 +9,10 @@ body {
 h1 {
     color: white;
     text-align: center;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin-bottom: 10px;
     font-size: 60px;
     font-weight: bold;
     background: #00000047;
-
-    ;
 }
 
 main {
@@ -43,3 +44,7 @@ button {
 button:hover {
     background-color:#193154;
   }
+
+#date {
+    color:white;
+}

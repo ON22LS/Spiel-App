@@ -15,7 +15,7 @@ export function applyPuzzleEffect(container: HTMLElement, options: { //Variablen
     return console.error("Could not find image");
   }  
 
-  const {columns, rows, spread, speed, easing, delay} = options; /*distructering: columns und rows ausschließen aus options*/
+  const {columns, rows, spread, speed, easing, delay} = options; //distructuring
 
   if (
     columns <= 0 || 
@@ -76,4 +76,4 @@ export function applyPuzzleEffect(container: HTMLElement, options: { //Variablen
 }
 
 const imageContainer = document.getElementById("imageContainer") as HTMLElement;
-applyPuzzleEffect(imageContainer, { columns:6, rows:9, spread: 100, speed:800, easing: "ease-out", delay: 40});
+applyPuzzleEffect(imageContainer, { columns:6, rows:9, spread: 100, speed:700, easing: "ease-out", delay: 40});
