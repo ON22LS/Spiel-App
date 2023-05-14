@@ -29,7 +29,7 @@ export function applyPuzzleEffect(container: HTMLElement, options: { //Variablen
   img.style.opacity = "0";
   container.style.position = "relative"; //damit puzzlestücke relativ zum Container positioniert werden können
 
-  const generatePieces = () => { //Arrow funktion, benötigt keine Parameter
+  const generatePieces = () => { //Arrow function, benötigt keine Parameter
       for (let y = 0; y < rows; y++) {  // jedes Puzzlestück in einer neuen Zeile zu positionieren, Schleife wiederholt sich solange y kleiner als rows
          for (let x = 0; x < columns; x++) { //startet eine Schleife über die Spalten (horizontale Achse) des Rasters
     
