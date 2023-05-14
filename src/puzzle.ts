@@ -1,8 +1,8 @@
 export function applyPuzzleEffect(container: HTMLElement, options: { //Variablen erstellen
-  columns: number;
-  rows: number;
-  spread: number;
-  speed: number;
+  columns: number; //spalten
+  rows: number; //zeilen
+  spread: number; //wie verteilt
+  speed: number; //wie schnell
   easing: string; //damit Übergang flüssiger aussieht
   delay: number;//Verzögerung der einzelnen Schritte
 }) {
@@ -15,7 +15,7 @@ export function applyPuzzleEffect(container: HTMLElement, options: { //Variablen
     return console.error("Could not find image");
   }  
 
-  const {columns, rows, spread, speed, easing, delay} = options; //distructuring
+  const {columns, rows, spread, speed, easing, delay} = options; //distructuring: auf Eigenschaften des options-Objekts zugreifen und sie in separaten Variablen speichern -> nicht jedes mal auf options verweisen müssen
 
   if (
     columns <= 0 || 
@@ -27,35 +27,35 @@ export function applyPuzzleEffect(container: HTMLElement, options: { //Variablen
   }
   
   img.style.opacity = "0";
-  container.style.position = "relative";
+  container.style.position = "relative"; //damit puzzlestücke relativ zum Container positioniert werden können
 
-  const generatePieces = () => {
-      for (let y = 0; y < rows; y++) { 
-         for (let x = 0; x < columns; x++) { 
+  const generatePieces = () => { //Arrow funktion, benötigt keine Parameter
+      for (let y = 0; y < rows; y++) {  // jedes Puzzlestück in einer neuen Zeile zu positionieren, Schleife wiederholt sich solange y kleiner als rows
+         for (let x = 0; x < columns; x++) { //startet eine Schleife über die Spalten (horizontale Achse) des Rasters
     
-         const correctX = (x / columns ) * img.width;
-         const correctY = (y/ rows) * img.height;
+         const correctX = (x / columns ) * img.width; //berechnet die horizontale Position des aktuellen Puzzlestücks basierend auf der Spaltenzahl und der Breite des Bildes
+         const correctY = (y/ rows) * img.height; //berechnet die vertikale Position des aktuellen Puzzlestücks basierend auf der Zeilenanzahl und der Höhe des Bildes
 
-         const randomX = correctX + (2*Math.random() -1) * spread;
-         const randomY = correctY + (2*Math.random() -1) * spread;
+         const randomX = correctX + (2*Math.random() -1) * spread; //fügt eine zufällige Verschiebung zur horizontalen Position des Puzzlestücks hinzu, um ein etwas chaotischeres Aussehen zu erzeugen, zufällige Zahl zwischen -1 und 1
+         const randomY = correctY + (2*Math.random() -1) * spread; //fügt eine zufällige Verschiebung zur vertikalen Position des Puzzlestücks hinzu, um ein etwas chaotischeres Aussehen zu erzeugen
 
-    const piece = document.createElement("div");
-    piece.classList.add("piece");
+    const piece = document.createElement("div"); //erstellt ein HTML-Element vom Typ div, das ein Puzzlestück repräsentiert
+    piece.classList.add("piece"); //fügt der CSS-Klasse "piece" das erstellte div-Element hinzu, um es später besser ansprechen zu können
 
     piece.style.position = "absolute";
     piece.style.top = piece.style.left = "0px";
-    piece.style.width = `${img.width / columns}px`; 
-    piece.style.height = `${img.height / rows}px`;
+    piece.style.width = `${img.width / columns}px`; //Breite des Puzzlestücks basierend auf der Spaltenanzahl des Rasters und der Breite des Bildes
+    piece.style.height = `${img.height / rows}px`; //Höhe des Puzzlestücks basierend auf der Zeilenanzahl des Rasters und der Höhe des Bildes
     piece.style.opacity = "0";//Puzzlestücke am Anfgang ausblenden
 
-    piece.style.transform = `translate(${randomX}px,${randomY}px)`;
+    piece.style.transform = `translate(${randomX}px,${randomY}px)`; //zufällig platzieren
     //piece.style.outline = "1px solid red";
     piece.style.transition = 
-    `transform ${speed}ms ${easing},`// Transform-Eigenschaft soll Übergang haben, Hardcoded-Werte durch Variablen ersetzen
+    `transform ${speed}ms ${easing},`// Transform-Eigenschaft soll Übergang haben
     + `opacity ${speed}ms ${easing}`;
 
-    piece.style.backgroundImage = `url(${img.src})`;
-    piece.style.backgroundPositionX = `-${correctX}px`;
+    piece.style.backgroundImage = `url(${img.src})`; //ausgewähltes Bild auf Hintergrund bringen
+    piece.style.backgroundPositionX = `-${correctX}px`; //Puzzleteile an korrekte Stelle bringen
     piece.style.backgroundPositionY = `-${correctY}px`;
 
     container.appendChild(piece);
@@ -70,10 +70,10 @@ export function applyPuzzleEffect(container: HTMLElement, options: { //Variablen
 }
   }
 
-  img.onload = () => {
+  img.onload = () => { //sobald das Bild geladen ist, geht das Puzzle los
       generatePieces();
   }
 }
 
-const imageContainer = document.getElementById("imageContainer") as HTMLElement;
+const imageContainer = document.getElementById("imageContainer") as HTMLElement; //auf imageContainer anwenden
 applyPuzzleEffect(imageContainer, { columns:6, rows:9, spread: 100, speed:700, easing: "ease-out", delay: 40});
