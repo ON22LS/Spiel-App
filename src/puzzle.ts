@@ -58,7 +58,7 @@ export function applyPuzzleEffect(container: HTMLElement, options: { //Variablen
     piece.style.backgroundPositionX = `-${correctX}px`; //Puzzleteile an korrekte Stelle bringen
     piece.style.backgroundPositionY = `-${correctY}px`;
 
-    container.appendChild(piece);
+    container.appendChild(piece); //neues Element ins Dokument einfügen
 
     setTimeout(() => { //Damit Puzzleteile nicht sofort zusammengeführt werden
       piece.style.opacity = "1"; //Puzzleteile wieder sichtbar machen
